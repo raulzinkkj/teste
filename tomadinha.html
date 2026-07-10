@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .tomada {
+            height: 500px;
+            width: 400px;
+            border: solid 1px grey;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .plug {
+            width: 300px;
+            height: 150px;
+            border: solid 1px grey;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .pinos {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .pino {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: black;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .sozinho {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pino2 {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: black;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tomada">
+            <div class="plug">
+                <div class="pinos">
+                    <div class="pino"></div>
+                    <div class="pino"></div>
+                </div>
+                <div class="sozinho">
+                    <div class="pino2"></div>
+                </div>
+            </div>
+            <div class="plug">
+                <div class="pinos">
+                    <div class="pino"></div>
+                    <div class="pino"></div>
+                </div>
+                <div class="sozinho">
+                    <div class="pino2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
