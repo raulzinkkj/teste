@@ -41,7 +41,7 @@
                 .then(resposta => resposta.json())
                 .then(dados => {
                     if (dados.sucesso) {
-                        window.location.href = "pagina_evento.php"
+                        window.location.href = "pagina_eventos.php"
                     } else {
                         document.getElementById("mensagem").innerHTML = dados.mensagem;
                     }

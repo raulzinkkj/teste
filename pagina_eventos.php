@@ -29,16 +29,37 @@ if (!isset($_SESSION['id_participante'])) {
             flex-direction: column;
             height: 100vh;
             gap: 20px;
-        }
+            background: #f5f5f5;
+        }   
 
         header {
             height: 80px;
             width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
-            background: black;
+            background: #fff;
             color: white;
+            border-bottom: solid 1px #c5c0c0;
+        }
+
+        img {
+            width: 250px;
+        }
+
+        h1 {
+            color: #5627bc;
+        }
+
+        .add_evento {
+            background: #5627bc;
+            width: 150px;
+            height: 50px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: none;
         }
 
         .container {
@@ -49,52 +70,69 @@ if (!isset($_SESSION['id_participante'])) {
         }
 
         .evento {
-            width: 300px;
-            height: 400px;
-            padding: 15px;
+            width: 200px;
+            height: 380px;
             display: flex;
-            justify-content: center;
-            text-align: center;
-            align-content: center;
             flex-direction: column;
-            border: solid 1px black;
             border-radius: 10px;
             gap: 10px;
+            background: #fff;  
         }
 
-        img {
-            width: 280px;
-            border-radius: 8px;
-            border: solid 1px black;
-        }
-
-        .junto {
+        .detalhes {
+            padding: 15px;
             display: flex;
-            gap: 10px;
-            justify-content: space-around;
+            flex-direction: column;
+            gap: 5px;
+            height: 100vh;
+            justify-content: space-between;
         }
 
-        button {
+        .detalhes button {
             width: 100%;
             height: 40px;
-            background: black;
-            color: white;
-            border: solid 1px black;
+            background: white;
+            color: #5627bc;
+            border: solid 1px #5627bc;
             border-radius: 8px;
             font-weight: bolder;
             transition: 0.5s;
         }
 
-        button:hover {
-            color: black;
-            background: white;
+        .img_evento {
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+            border: none;
+            object-position: center;
+            height: 135px;
+            object-fit: cover;
         }
+
+        .data, .local {
+            width: 200px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .data img {
+            width: 25px;
+        }
+
+         .local img {
+            width: 25px;
+        }
+      
     </style>
 </head>
 
 <body>
     <header>
+        <img src="img/logo.png" alt="">
+
         <h1>Página de Eventos</h1>
+
+        <button onclick="criar_evento()" class="add_evento">+ Criar evento</button>
+
     </header>
     <div class="container">
         <?php
@@ -106,22 +144,33 @@ if (!isset($_SESSION['id_participante'])) {
 
         while ($eventos = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<div class='evento'>";
-            echo "<img src='uploads/{$eventos['imagem_evento']}' alt='Imagem do evento'>";
+            echo "<img src='uploads/{$eventos['imagem_evento']}' alt='Imagem do evento' class='img_evento'>";
+            echo "<div class='detalhes'>";
             echo "<h2>{$eventos['titulo_evento']}</h2>";
-            echo "<div class='junto'>";
-            echo "<p>{$eventos['data_evento']}</p>";
-            echo "<p>{$eventos['local_evento']}</p>";
+            echo "<div class='data'>";
+            echo "<img src='img/data.svg'>";
+            echo "{$eventos['data_evento']}";
             echo "</div>";
-            echo "<strong>{$eventos['vagas_evento']}</strong>";
+            echo "<div class='local'>";
+            echo "<img src='img/local.svg'>";
+            echo "{$eventos['local_evento']}";
+            echo "</div>";
+            echo "<strong>{$eventos['vagas_evento']}-Vagas</strong>";
             echo "<form action='inscricoes.php' method='get'>
                     <input type='hidden' name='id_evento' value='{$eventos['id_evento']}'>
                     <button type='submit'>Inscrever-se</button>
                   </form>";
+                  echo "</div>";
             echo "</div>";
         }
 
         ?>
     </div>
+    <script>
+        function criar_evento() {
+            window.location.href = "eventos.php";
+        }
+    </script>
 </body>
 
 </html>
