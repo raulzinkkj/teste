@@ -7,13 +7,31 @@ $email_participante = $_POST['email_participante'];
 $telefone_participante = $_POST['telefone_participante'];
 $senha_participante = password_hash($_POST['senha_participante'], PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO participantes (nome_participante, cpf_participante, email_participante, telefone_participante, senha_participante)
-        VALUES (:nome_participante, :cpf_participante, :email_participante, :telefone_participante, :senha_participante)";
+$participante = [
+    "nome_participante" => $nome_participante,
+    "cpf_participante" => $cpf_participante,
+    "email_participante" => $email_participante,
+    "telefone_participante" => $telefone_participante,
+    "senha_participante" => $senha_participante
+];
 
-$stmt = $conexao->prepare($sql);
-$stmt->bindParam(':nome_participante', $nome_participante);
-$stmt->bindParam(':cpf_participante', $cpf_participante);
-$stmt->bindParam(':email_participante', $email_participante);
-$stmt->bindParam(':telefone_participante', $telefone_participante);
-$stmt->bindParam(':senha_participante', $senha_participante);
-$stmt->execute();
+// Caminho do arquivo JSON
+$arquivo = "../participantes.json";
+
+// Se o arquivo existir, lê os dados
+if (file_exists($arquivo)) {
+    $participantes = json_decode(file_get_contents($arquivo), true);
+} else {
+    $participantes = [];
+}
+
+// Adiciona o novo participante
+$participantes[] = $participante;
+
+// Salva novamente no JSON
+file_put_contents(
+    $arquivo,
+    json_encode($participantes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+);
+
+echo "Participante cadastrado com sucesso!";

@@ -1,0 +1,16 @@
+[
+    {
+        "nome_participante": "raul",
+        "cpf_participante": "1111111",
+        "email_participante": "raul@gmail.com",
+        "telefone_participante": "42991235796",
+        "senha_participante": "$2y$10$WSxOomQFOVE1TYrSd7v1Z.Js\/X2TEbHyCoxGM2sVuqxzl2ws9RrVK"
+    },
+    {
+        "nome_participante": "elcio",
+        "cpf_participante": "3232323",
+        "email_participante": "elcio@gmail.com",
+        "telefone_participante": "42991235796",
+        "senha_participante": "$2y$10$QXECpzLWRhp2OldMErKJSe4sJl7863Omp3QQw2ybLd9SAR5fpAGIS"
+    }
+]
